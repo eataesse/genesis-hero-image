@@ -1,2 +1,2 @@
-# wordpress-hero-image-page-post
-Wordpress Plugin to use the first image of a page/post as hero image
+# genesis-hero-image
+Wordpress Plugin for Genesis Framework to set a hero image using the first or featured image of a page/post or a standard image.

@@ -119,8 +119,8 @@ class Genesis_Hero_Image_Admin {
      *        Administration Menus: http://codex.wordpress.org/Administration_Menus
      *
      */
-    add_options_page( 'Genesis Hero Image', 'Genesis Hero Image', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
-    );
+    add_submenu_page('genesis', __('Genesis Hero Image','favicon_up'), __('Genesis Hero Image','favicon_up'), 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
+    //add_options_page( 'Genesis Hero Image', 'Genesis Hero Image', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
 }
 
 	 /**
@@ -134,7 +134,8 @@ class Genesis_Hero_Image_Admin {
 		*  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
 		*/
 	   $settings_link = array(
-		'<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
+		'<a href="' . admin_url( 'admin.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
+        //'<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
 	   );
 	   return array_merge(  $settings_link, $links );
 
@@ -174,6 +175,8 @@ class Genesis_Hero_Image_Admin {
 		$valid['image'] = (isset($input['image']) && !empty($input['image'])) ? $input['image'] : 0;
         //Standard image
         $valid['standard_img_id'] = (isset($input['standard_img_id']) && !empty($input['standard_img_id'])) ? absint($input['standard_img_id']) : 0;
+        $valid['title_overlay'] = (isset($input['title_overlay']) && !empty($input['title_overlay'])) ? $input['title_overlay'] : 0;
+        $valid['height'] = (isset($input['height']) && !empty($input['height'])) ? $input['height'] : 0;
 		
 		return $valid;
 	 }

@@ -200,6 +200,9 @@ $hooks = array(
     $standard_img_id = $options['standard_img_id'];
     $standard_img = wp_get_attachment_image_src( $standard_img_id, 'thumbnail' );
     $standard_img_url = $standard_img[0];
+    
+    $title_overlay = $options['title_overlay'];
+    $height = $options['height'];
     ?>
 
     <?php
@@ -240,6 +243,10 @@ $hooks = array(
 				<fieldset>
 					<legend class="screen-reader-text"><span>input type="radio"</span></legend>
 					<label title='g:i a'>
+						<input type="radio" name="<?php echo $this->plugin_name; ?>[image]" value="none" <?php checked($image, 'none'); ?> />
+						<span><?php esc_attr_e( 'None', 'wp_admin_style' ); ?></span>
+					</label><br>
+                    <label title='g:i a'>
 						<input type="radio" name="<?php echo $this->plugin_name; ?>[image]" value="first" <?php checked($image, 'first'); ?> />
 						<span><?php esc_attr_e( 'First image of content', 'wp_admin_style' ); ?></span>
 					</label><br>
@@ -269,6 +276,26 @@ $hooks = array(
                         <button id="genesis_hero_img-delete_img_button" class="button">X</button>
                     </div>
                 </fieldset>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><label for="<?php echo $this->plugin_name; ?>[title]"><?php esc_attr_e( 'Use title as text overlay', 'wp_admin_style' ); ?></label></th>
+            <td>
+                <fieldset>
+                    <legend class="screen-reader-text"><span>Fieldset Example</span></legend>
+                	<label for="<?php echo $this->plugin_name; ?>[title_overlay]">
+                		<input name="<?php echo $this->plugin_name;?>[title_overlay]" type="checkbox" id="<?php echo $this->plugin_name;?>-title_overlay" value="1" <?php checked($title_overlay, '1'); ?> />
+                		<span><?php esc_attr_e( '', 'wp_admin_style' ); ?></span>
+                	</label>
+                </fieldset>
+            </td>
+        </tr>
+        <tr valign="top">
+			<th scope="row">
+                <label for="<?php echo $this->plugin_name; ?>[height]"><?php esc_attr_e( 'Height of hero image', 'wp_admin_style' ); ?></label>
+            </th>
+            <td>
+                <input type="number" value="<?php echo $height; ?>" class="small-text" id="<?php echo $this->plugin_name; ?>-height" name="<?php echo $this->plugin_name; ?>[height]" /><span class="">px</span>
             </td>
         </tr>
 	
